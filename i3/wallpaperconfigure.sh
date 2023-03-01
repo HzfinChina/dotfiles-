@@ -7,7 +7,7 @@ do
     for file in $wallpapers
     do
         echo $wpdir/$file > /tmp/WallpaperNow.txt
-        feh --bg-fill ${wpdir}/${file}
+        feh --bg-fill ${wpdir}/${file} ${wpdir}/${file}
         sleep 1000
     done
 done

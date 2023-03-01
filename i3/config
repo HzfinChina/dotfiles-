@@ -1,7 +1,8 @@
 ####################################################
+include ./Multiple_monitor
 # 布局设置
 set $mod Mod4
-font pango:monospace 10
+font pango:monospace 12
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
@@ -16,21 +17,12 @@ set $ws8 "8"
 set $ws9 "9"
 set $ws10 "10"
 
-default_border pixel 5
+
+default_border normal 7
 
 title_align left
+for_window [all] title_window_icon on
 
-#颜色设置
-# 注意主窗口的边界颜色是child_border，而border只是标题栏上下两条线
-# class                 border  bground text    indicator child_border
-client.focused          #6272A4 #6272A4 #F8F8F2 #6272A4   #0f59a4
-client.focused_inactive #44475A #44475A #F8F8F2 #44475A   #44475A
-client.unfocused        #282A36 #282A36 #BFBFBF #282A36   #282A36
-client.urgent           #44475A #FF5555 #F8F8F2 #FF5555   #ef475d
-client.placeholder      #282A36 #282A36 #F8F8F2 #282A36   #282A36
-
-client.background       #F8F8F2
-########################################################
 workspace_layout default
 # 设置窗口
 
@@ -40,6 +32,13 @@ for_window [class="kdeconnect.app"] floating enable
 
 for_window [floating] border pixel 0
 
+
+
+### i3bar
+
+bar {
+    status_command i3status
+}
 
 
 
@@ -60,7 +59,7 @@ bindsym $mod+Shift+F2 exec --no-startup-id /home/hzf/.config/i3/redshift c
 bindsym $mod+Shift+F3 exec --no-startup-id /home/hzf/.config/i3/redshift w
 
 # start a terminal
-bindsym $mod+Return exec "GLFW_IM_MODULE=ibus kitty"
+bindsym $mod+Return exec "alacritty"
 # start dropdown terminal
 exec_always --no-startup-id kitti3 -p CT -s 0.4 0.2
 bindsym $mod+Shift+Return nop kitti3
@@ -92,17 +91,10 @@ bindsym $mod+v split v
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
 
-# toggle polybar show or hide 
-bindsym $mod+Shift+f exec polybar-msg cmd toggle
-
 # change container layout (stacked, tabbed, toggle split)
 bindsym $mod+s layout stacking
 bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
-
-# Lock
-bindsym $mod+z exec --no-startup-id "i3lock -i /home/hzf/Pictures/ScreenLock.png"
-
 
 # focus the parent container
 bindsym $mod+a focus parent
@@ -145,19 +137,11 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Do you really want to exit i
 # resize window (you can also use the mouse for that)
 bindsym $mod+r mode "resize"
 mode "resize" {
-        # These bindings trigger as soon as you enter the resize mode
-
-        # Pressing left will shrink the window’s width.
-        # Pressing right will grow the window’s width.
-        # Pressing up will shrink the window’s height.
-        # Pressing down will grow the window’s height.
         bindsym h resize shrink width 30 px 
         bindsym k resize grow height 30 px 
         bindsym j resize shrink height 30 px
         bindsym l resize grow width 30 px 
 
-
-        # back to normal: Enter or Escape or $mod+r
         bindsym Return mode "default"
         bindsym Escape mode "default"
         bindsym $mod+r mode "default"
@@ -189,18 +173,14 @@ mode "move" {
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
-# set title bar unsensible
-#for_window [class="^.*"] border pixel 
 
-# make a terminal sticky that was started as a notepad
-#for_window [instance=notepad] sticky enable
 
 ##############################
 #默认自启的应用
 # Start XDG autostart .desktop files using dex. See also
 # https://wiki.archlinux.org/index.php/XDG_Autostart
 exec --no-startup-id dex --autostart --environment i3
-exec --no-startup-id /home/hzf/.config/i3/check_monitor.py
+#exec --no-startup-id /home/hzf/.config/i3/check_monitor.py
 
 # The combination of xss-lock, nm-applet and pactl is a popular choice, so
 # they are included here as an example. Modify as you see fit.
@@ -216,7 +196,7 @@ exec --no-startup-id clash
 exec_always --no-startup-id picom --config /home/hzf/.config/picom/picom.conf
 # config monitor
 #exec --no-startup-id /home/hzf/.config/i3/check_monitor.py
-exec_always --no-startup-id polybar -r -c ~/.config/polybar/forest/config.ini
+exec --no-startup-id polybar -r -c ~/.config/polybar/forest/config.ini
 # remap Alt_L to super 
 exec --no-startup-id xmodmap ~/.Xmodmap
 #disable wifi when connceted wired network 
@@ -228,6 +208,7 @@ exec --no-startup-id /home/hzf/.config/i3/tabletset.sh
 #mount windows filesystem
 exec --no-startup-id /home/hzf/.config/i3/mountwin.sh
 # auto start firefox at workspace 
-exec --no-startup-id i3-msg 'workspace 1; exec firefox;'
+# exec --no-startup-id i3-msg 'workspace 1; exec firefox;'
 # start Nutstore to sync
 exec --no-startup-id nutstore 
+
