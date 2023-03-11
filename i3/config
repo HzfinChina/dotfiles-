@@ -155,7 +155,7 @@ floating_modifier $mod
 bindsym $mod+Shift+space floating toggle
 
 #screenshot shortcuts
-bindcode 107 --release exec "import png:- | xclip -selection clipboard -t image/png"
+#bindcode 107 --release exec "import png:- | xclip -selection clipboard -t image/png"
 
 # sticky window toggle
 bindsym $mod+space sticky toggle
