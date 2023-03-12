@@ -6,10 +6,9 @@ filled in as strings with either
 a global executable or a path to
 an executable
 ]]
-require("user.options")
-require("user.luasnip")
+require("options")
+require("luasnip")
 -- general
-require("user.knap")
 lvim.log.level = "warn"
 lvim.format_on_save.enabled = false
 lvim.colorscheme = "lunar"
