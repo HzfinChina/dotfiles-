@@ -53,10 +53,10 @@ bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ to
 bindsym XF86HomePage exec --no-startup-id dolphin --new-window
 # fn + f11 open chrome and enable proxy
 bindsym XF86Explorer exec --no-startup-id "google-chrome-stable --proxy-server=127.0.0.1:7890"
-bindsym $mod+F2 exec --no-startup-id /home/hzf/.config/i3/redshift d
-bindsym $mod+F3 exec --no-startup-id /home/hzf/.config/i3/redshift b
-bindsym $mod+Shift+F2 exec --no-startup-id /home/hzf/.config/i3/redshift c
-bindsym $mod+Shift+F3 exec --no-startup-id /home/hzf/.config/i3/redshift w
+bindsym $mod+F2 exec --no-startup-id /home/hzf/.config/i3/redshift.sh d
+bindsym $mod+F3 exec --no-startup-id /home/hzf/.config/i3/redshift.sh b
+bindsym $mod+Shift+F2 exec --no-startup-id /home/hzf/.config/i3/redshift.sh w
+bindsym $mod+Shift+F3 exec --no-startup-id /home/hzf/.config/i3/redshift.sh c
 
 # start a terminal
 bindsym $mod+Return exec "alacritty"
@@ -205,10 +205,10 @@ exec --no-startup-id /home/hzf/.config/i3/wifidisconnect.sh
 exec --no-startup-id /home/hzf/.config/i3/wallpaperconfigure.sh
 #set tablet
 exec --no-startup-id /home/hzf/.config/i3/tabletset.sh
-#mount windows filesystem
-exec --no-startup-id /home/hzf/.config/i3/mountwin.sh
 # auto start firefox at workspace 
 # exec --no-startup-id i3-msg 'workspace 1; exec firefox;'
 # start Nutstore to sync
 exec --no-startup-id nutstore 
 
+# shortcuts
+bindsym Print exec import -window root png:- | xclip -selection clipboard -t image/png
