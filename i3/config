@@ -191,16 +191,8 @@ exec --no-startup-id nm-applet
 # 设置自启动的应用
 exec --no-startup-id setxkbmap -option caps:escape 
 exec --no-startup-id fcitx5
-exec --no-startup-id clash
-#exec picom (compositor) let terminal be transparent
-exec_always --no-startup-id picom --config /home/hzf/.config/picom/picom.conf
 # config monitor
-#exec --no-startup-id /home/hzf/.config/i3/check_monitor.py
-exec --no-startup-id polybar -r -c ~/.config/polybar/forest/config.ini
-# remap Alt_L to super 
-exec --no-startup-id xmodmap ~/.Xmodmap
-#disable wifi when connceted wired network 
-exec --no-startup-id /home/hzf/.config/i3/wifidisconnect.sh 
+exec --no-startup-id clash
 #configure wallpaper
 exec --no-startup-id /home/hzf/.config/i3/wallpaperconfigure.sh
 #set tablet

@@ -1,6 +1,6 @@
 if ! test -e /tmp/screentemplight.txt
 then
-    echo -e "BRIGHTNESS=1.0\nTEMP=5000" > /tmp/screentemplight.txt
+    echo -e "BRIGHTNESS=1.0\nTEMP=6000" > /tmp/screentemplight.txt
 fi
 
 source /tmp/screentemplight.txt
