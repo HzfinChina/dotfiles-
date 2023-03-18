@@ -67,6 +67,7 @@ export ALIYUNPAN_CONFIG_DIR=/home/hzf/.config/aliyunpan
 alias lv=lvim
 alias rm="echo do not use rm!!"
 alias si=silentlyrun
+alias r=ranger
 
 source /usr/share/nvm/init-nvm.sh
 eval $(thefuck --alias)
