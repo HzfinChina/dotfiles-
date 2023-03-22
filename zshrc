@@ -61,16 +61,17 @@ plugins=(
 silentlyrun(){
     nohup $* > /dev/null&
 }
+createdotfile(){
+    mv ~/.config/$1 -t ~/dotfiles/
+    ln -s ~/dotfiles/$1 ~/.config/$1
+}
 # env
 export ALIYUNPAN_CONFIG_DIR=/home/hzf/.config/aliyunpan
-# alias
-alias lv=lvim
-alias rm="echo do not use rm!!"
-alias si=silentlyrun
-alias r=ranger
+RANGER_LOAD_DEFAULT_RC=FALSE
 
 source /usr/share/nvm/init-nvm.sh
 eval $(thefuck --alias)
+eval "$(zoxide init zsh)"
 
 ZSH_CACHE_DIR=$HOME/.cache/oh-my-zsh
 if [[ ! -d $ZSH_CACHE_DIR ]]; then
@@ -78,4 +79,11 @@ if [[ ! -d $ZSH_CACHE_DIR ]]; then
 fi
 
 source $ZSH/oh-my-zsh.sh
-
+# alias
+alias lv=lvim
+alias rm="echo do not use rm!!"
+alias si=silentlyrun
+alias ls=exa
+alias r=ranger
+alias cat=bat
+alias grep=rg
