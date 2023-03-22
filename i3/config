@@ -1,5 +1,5 @@
 ####################################################
-include ./Multiple_monitor
+# include ./Multiple_monitor
 # 布局设置
 set $mod Mod4
 font pango:monospace 12
@@ -37,7 +37,7 @@ for_window [floating] border pixel 0
 ### i3bar
 
 bar {
-    status_command i3status
+    status_command i3status -c ~/.config/i3/i3status.conf
 }
 
 
@@ -59,7 +59,7 @@ bindsym $mod+Shift+F2 exec --no-startup-id /home/hzf/.config/i3/redshift.sh w
 bindsym $mod+Shift+F3 exec --no-startup-id /home/hzf/.config/i3/redshift.sh c
 
 # start a terminal
-bindsym $mod+Return exec "alacritty"
+bindsym $mod+Return exec "kitty"
 # start dropdown terminal
 exec_always --no-startup-id kitti3 -p CT -s 0.4 0.2
 bindsym $mod+Shift+Return nop kitti3
@@ -189,7 +189,6 @@ exec --no-startup-id dex --autostart --environment i3
 # and nm-applet is a desktop environment-independent system tray GUI for it.
 exec --no-startup-id nm-applet
 # 设置自启动的应用
-exec --no-startup-id setxkbmap -option caps:escape 
 exec --no-startup-id fcitx5
 # config monitor
 exec --no-startup-id clash
@@ -197,8 +196,6 @@ exec --no-startup-id clash
 exec --no-startup-id /home/hzf/.config/i3/wallpaperconfigure.sh
 #set tablet
 exec --no-startup-id /home/hzf/.config/i3/tabletset.sh
-# auto start firefox at workspace 
-# exec --no-startup-id i3-msg 'workspace 1; exec firefox;'
 # start Nutstore to sync
 exec --no-startup-id nutstore 
 
