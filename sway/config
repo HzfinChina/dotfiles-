@@ -161,7 +161,7 @@ bar {
 
 # Exec {{{
 exec ~/.config/sway/wallpaperconfigure.sh
-exec clash
+exec cfw
 exec fcitx5
-# exec nutstore
+exec nutstore
 # }}}
