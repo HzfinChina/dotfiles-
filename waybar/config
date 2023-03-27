@@ -10,7 +10,6 @@
     "modules-right": ["network", "pulseaudio", "temperature", "cpu", "memory", "battery", "clock", "tray"],
     "sway/workspaces": {
         "disable-scroll": true,
-        "disable-click": true,
     },
     "tray": {
         "spacing": 10,
