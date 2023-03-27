@@ -1,6 +1,3 @@
-# If you come from bash you might have to change your $PATH.
-export PATH=/home/hzf/.local/bin:$PATH
-
 # Path to your oh-my-zsh installation.
 ZSH=/usr/share/oh-my-zsh/
 
@@ -13,7 +10,7 @@ ZSH_THEME="agnoster"
 # Case-sensitive completion must be off. _ and - will be interchangeable.
 # HYPHEN_INSENSITIVE="true"
 
-zstyle ':omz:update' mode reminder  # just remind me to update when it's time
+# zstyle ':omz:update' mode reminder  # just remind me to update when it's time
 
 # Uncomment the following line if pasting URLs and other text is messed up.
 # DISABLE_MAGIC_FUNCTIONS="true"
@@ -41,7 +38,7 @@ zstyle ':omz:update' mode reminder  # just remind me to update when it's time
 # "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
 # or set a custom format using the strftime function format specifications,
 # see 'man strftime' for details.
-# HIST_STAMPS="mm/dd/yyyy"
+HIST_STAMPS="mm/dd/yyyy"
 
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/home/hzf/.config/zshcustom/
@@ -52,7 +49,6 @@ zstyle ':omz:update' mode reminder  # just remind me to update when it's time
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-  zsh-syntax-highlighting
 )
 
 
@@ -65,21 +61,24 @@ createdotfile(){
     mv ~/.config/$1 -t ~/dotfiles/
     ln -s ~/dotfiles/$1 ~/.config/$1
 }
-# env
-export ALIYUNPAN_CONFIG_DIR=/home/hzf/.config/aliyunpan
-RANGER_LOAD_DEFAULT_RC=FALSE
 
-source /usr/share/nvm/init-nvm.sh
+ps_grep(){
+    ps -ef | grep -i $1
+}
+
+ps_kill(){
+    kill `ps_grep $1 | awk '{print $2}'`
+}
+
 eval $(thefuck --alias)
-eval "$(zoxide init zsh)"
 
 ZSH_CACHE_DIR=$HOME/.cache/oh-my-zsh
 if [[ ! -d $ZSH_CACHE_DIR ]]; then
   mkdir $ZSH_CACHE_DIR
 fi
 
-source $ZSH/oh-my-zsh.sh
-# alias
+source $ZSH/oh-my-zsh.sh # alias
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 alias lv=lvim
 alias rm="echo do not use rm!!"
 alias si=silentlyrun
@@ -87,3 +86,6 @@ alias ls=exa
 alias r=ranger
 alias cat=bat
 alias grep=rg
+alias nv=nvim
+alias pg=ps_grep
+alias pk=ps_kill
