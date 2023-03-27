@@ -89,3 +89,4 @@ alias grep=rg
 alias nv=nvim
 alias pg=ps_grep
 alias pk=ps_kill
+alias lv=/home/hzf/.local/bin/lvim
