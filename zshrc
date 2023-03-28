@@ -79,14 +79,12 @@ fi
 
 source $ZSH/oh-my-zsh.sh # alias
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-alias lv=lvim
 alias rm="echo do not use rm!!"
 alias si=silentlyrun
 alias ls=exa
 alias r=ranger
 alias cat=bat
 alias grep=rg
-alias nv=nvim
 alias pg=ps_grep
 alias pk=ps_kill
-alias nv=/home/hzf/.local/bin/lvim
+alias lv=/home/hzf/.local/bin/lvim

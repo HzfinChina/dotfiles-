@@ -1,5 +1,5 @@
 ln -fs ~/dotfiles/alacritty ~/.config/alacritty
-ln -fs ~/dotfiles/electron-flags ~/.config/electron-flags
+ln -fs ~/dotfiles/electron-flags.conf ~/.config/electron-flags.conf
 ln -fs ~/dotfiles/fontconfig ~/.config/fontconfig
 ln -fs ~/dotfiles/kitty ~/.config/kitty
 ln -fs ~/dotfiles/neofetch ~/.config/neofetch
