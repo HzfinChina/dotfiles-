@@ -141,7 +141,7 @@ bindsym $mod+f3 exec ~/.config/sway/redshift.sh b
 bindsym $mod+Shift+f2 exec ~/.config/sway/redshift.sh w
 bindsym $mod+Shift+f3 exec ~/.config/sway/redshift.sh c
 bindsym $mod+Shift+m exec ~/.config/sway/multihead.sh
-bindsym $mod+Shift+r exec alacritty -e ranger
+bindsym $mod+Shift+r exec kitty -e ranger
 
 
 
