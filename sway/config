@@ -14,15 +14,15 @@ set $opacity 0.9
 # Settings {{{
 smart_borders on
 gaps inner 10
-# xwayland disable
+xwayland enable
 font pango:Inter:style=Regular 10
 default_border pixel 2
 default_floating_border pixel 2
 
 
 exec_always {
-    gsettings set org.gnome.desktop.interface gtk-theme "Dracula"
-    gsettings set org.gnome.desktop.wm.preferences theme "Dracula"
+#     gsettings set org.gnome.desktop.interface gtk-theme "Dracula"
+#     gsettings set org.gnome.desktop.wm.preferences theme "Dracula"
 }
 # }}}
 
@@ -162,8 +162,8 @@ bar {
 # }}}:
 
 # Exec {{{
-exec ~/.config/sway/wallpaperconfigure.sh
-exec cfw
+# exec ~/.config/sway/wallpaperconfigure.sh
+exec clash
 exec fcitx5
 exec nutstore
 # }}}
