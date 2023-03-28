@@ -7,7 +7,7 @@ set $down j
 set $up k
 set $right l
 set $term kitty
-set $menu wofi --insensitive --show drun | xargs swaymsg exec --
+set $menu wofi -c ~/.config/wofi/config
 set $opacity 0.9
 # }}}
 
@@ -19,11 +19,11 @@ font pango:Inter:style=Regular 10
 default_border pixel 2
 default_floating_border pixel 2
 
-# exec_always {
-#   gsettings set $gnome-schema gtk-theme 'oomox-tokyo-night'
-#   gsettings set $gnome-schema icon-theme 'oomox-tokyo-night'
-#   gsettings set $gnome-schema font-name 'Inter 11'
-# }
+
+exec_always {
+    gsettings set org.gnome.desktop.interface gtk-theme "Dracula"
+    gsettings set org.gnome.desktop.wm.preferences theme "Dracula"
+}
 # }}}
 
 # I/O configuration {{{
@@ -140,6 +140,8 @@ bindsym $mod+f2 exec ~/.config/sway/redshift.sh d
 bindsym $mod+f3 exec ~/.config/sway/redshift.sh b
 bindsym $mod+Shift+f2 exec ~/.config/sway/redshift.sh w
 bindsym $mod+Shift+f3 exec ~/.config/sway/redshift.sh c
+bindsym $mod+Shift+m exec ~/.config/sway/multihead.sh
+bindsym $mod+Shift+r exec alacritty -e ranger
 
 
 
