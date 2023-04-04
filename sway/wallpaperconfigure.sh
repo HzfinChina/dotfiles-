@@ -1,5 +1,5 @@
 #!/bin/bash
-wpdir="/home/hzf/Pictures/wallpapers/"
+wpdir="/home/hzf/Pictures/Wallpapers/"
 wallpapers=$(ls $wpdir | sort -R)
 while true
 do 
