@@ -9,7 +9,7 @@ ln -fs ~/dotfiles/ranger ~/.config/ranger
 ln -fs ~/dotfiles/rime ~/.local/share/fcitx5/rime
 cd ~/.local/share/fcitx5/rime
 rime_deployer --build
-
+# zsh Theme
 ln -fs ~/dotfiles/sway ~/.config/sway
 ln -fs ~/dotfiles/waybar ~/.config/waybar
 ln -fs ~/dotfiles/wofi ~/.config/wofi
