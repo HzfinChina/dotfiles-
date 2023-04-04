@@ -1,8 +1,8 @@
 # Path to your oh-my-zsh installation.
 ZSH=/usr/share/oh-my-zsh/
 
-ZSH_THEME="agnoster"
 
+ZSH_THEME='fletcherm'
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
 
@@ -88,3 +88,4 @@ alias grep=rg
 alias pg=ps_grep
 alias pk=ps_kill
 alias lv=/home/hzf/.local/bin/lvim
+alias nq="nvim-qt --nvim ~/.local/bin/lvim"
