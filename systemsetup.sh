@@ -1,5 +1,5 @@
 yay -S ly
-sudo systemctl start ly
+systemctl start ly
 yay -S pulseaudio pulseaudio-alsa pulseaudio-bluetooth
 yay -S alsa-firmware sof-firmware alsa-ucm-conf alsa-utils
 yay -S oh-my-zsh-git zsh-syntax-highlight
