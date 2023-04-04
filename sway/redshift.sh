@@ -9,7 +9,6 @@ case $1 in
     c)
         if test $TEMP -lt 8000
         then
-            echo TEMP:$TEMP
             TEMP=$(expr $TEMP + 500)
         fi
         ;;
@@ -34,6 +33,9 @@ case $1 in
         ;;
 esac
 
+echo $BRIGHTNESS
+echo $TEMP
 echo -e "BRIGHTNESS=$BRIGHTNESS\nTEMP=$TEMP" > /tmp/screentemplight.txt
 pkill gammastep
+notify-send "Bright:$BRIGHTNESS" "Temp:$TEMP"
 gammastep -l 0:0 -O $TEMP -b $BRIGHTNESS:$BRIGHTNESS
