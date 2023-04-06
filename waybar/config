@@ -32,8 +32,8 @@
         "full-at": 95,
         "states": {
             "good": 95,
-            "warning": 30,
-            "critical": 15
+            "warning": 35,
+            "critical": 20
         },
         "format": "{icon} {capacity}%",
         "format-icons": ["", "", "", "", ""]
