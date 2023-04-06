@@ -6,7 +6,7 @@ set $left h
 set $down j
 set $up k
 set $right l
-set $term kitty
+set $term qterminal
 set $menu wofi -c ~/.config/wofi/config
 set $opacity 0.9
 # }}}
@@ -14,15 +14,15 @@ set $opacity 0.9
 # Settings {{{
 smart_borders on
 gaps inner 10
-xwayland enable
+# xwayland disable
 font pango:Inter:style=Regular 10
 default_border pixel 2
 default_floating_border pixel 2
 
 
 exec_always {
-#     gsettings set org.gnome.desktop.interface gtk-theme "Dracula"
-#     gsettings set org.gnome.desktop.wm.preferences theme "Dracula"
+    gsettings set org.gnome.desktop.interface gtk-theme "Dracula"
+    gsettings set org.gnome.desktop.wm.preferences theme "Dracula"
 }
 # }}}
 
@@ -52,7 +52,7 @@ bindswitch --reload --locked lid:off output eDP-1 enable
 
 # Keybindings {{{
 # Launch term
-bindsym $mod+Return exec kitty
+bindsym $mod+Return exec $term
 # Kill focused window
 bindsym $mod+Shift+q kill
 # Start launcher
@@ -131,9 +131,9 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 # Custom keybindings
-bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +2%
-bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -2%
-bindsym --locked XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume alsa_output.pci-0000_00_1f.3-platform-skl_hda_dsp_generic.HiFi__hw_sofhdadsp__sink +2%
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume alsa_output.pci-0000_00_1f.3-platform-skl_hda_dsp_generic.HiFi__hw_sofhdadsp__sink -2%
+bindsym --locked XF86AudioMute exec pactl set-sink-mute alsa_output.pci-0000_00_1f.3-platform-skl_hda_dsp_generic.HiFi__hw_sofhdadsp__sink toggle
 bindsym Print exec grim -g "$(slurp)" - | swappy -f -
 bindsym $mod+z exec swaylock
 bindsym $mod+f2 exec ~/.config/sway/redshift.sh d
@@ -141,7 +141,8 @@ bindsym $mod+f3 exec ~/.config/sway/redshift.sh b
 bindsym $mod+Shift+f2 exec ~/.config/sway/redshift.sh w
 bindsym $mod+Shift+f3 exec ~/.config/sway/redshift.sh c
 bindsym $mod+Shift+m exec ~/.config/sway/multihead.sh
-bindsym $mod+Shift+r exec kitty -e ranger
+bindsym $mod+Shift+r exec $term -e ranger
+bindsym $mod+Shift+z exec swaylock -c 000000
 
 
 
@@ -151,6 +152,8 @@ bindsym $mod+Shift+r exec kitty -e ranger
 for_window [app_id="firefox" title="Firefox — Sharing Indicator"] border none, floating enable, nofocus
 for_window {
     [app_id="kitty"] opacity $opacity
+    [app_id="foot"] opacity $opacity
+    [app_id="alacritty"] opacity $opacity
 }
 for_window [window_role="pop-up"] floating enable
 # }}}
@@ -162,7 +165,8 @@ bar {
 # }}}:
 
 # Exec {{{
-# exec ~/.config/sway/wallpaperconfigure.sh
+exec ~/.config/sway/wallpaperconfigure.sh
+exec dunst
 exec clash
 exec fcitx5
 exec nutstore
