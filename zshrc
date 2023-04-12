@@ -89,3 +89,4 @@ alias pg=ps_grep
 alias pk=ps_kill
 alias lv=/home/hzf/.local/bin/lvim
 alias nq="nvim-qt --nvim ~/.local/bin/lvim"
+alias siyuan-note="docker ps -a | grep siyuan |cut -d ' ' -f 1 | xargs docker start"
