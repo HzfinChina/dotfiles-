@@ -7,7 +7,7 @@ do
     for file in $wallpapers
     do
         pkill swaybg
-        echo $wpdir/$file > /tmp/WallpaperNow.txt
+        echo $wpdir$file > /tmp/WallpaperNow.txt
         swaybg -m fill -i ${wpdir}${file} &
         sleep 1000
     done
