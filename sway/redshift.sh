@@ -19,7 +19,7 @@ case $1 in
         fi
         ;;
     b)
-        if test $(echo "$BRIGHTNESS<0.92" | bc) -ne 0
+        if test $(echo "$BRIGHTNESS<1" | bc) -ne 0
         then
             BRIGHTNESS=$(echo "$BRIGHTNESS+0.08" | bc)
         fi
