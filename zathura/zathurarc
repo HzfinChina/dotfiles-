@@ -1,0 +1,6 @@
+set page-padding 2
+set page-cache-size 40
+# Defines if original image colors should be kept while recoloring
+set recolor-reverse-video true 
+set recolor-lightcolor "#000000"
+set recolor-darkcolor "#88CFEC" 
