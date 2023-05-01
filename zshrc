@@ -86,3 +86,4 @@ alias r=ranger
 alias pg=ps_grep
 alias pk=ps_kill
 alias nv=nvim
+# alias nq="nvim-qt --geometry 0x0"

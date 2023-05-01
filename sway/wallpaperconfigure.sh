@@ -8,9 +8,7 @@ do
     do
         pkill swaybg
         echo $wpdir$file > /tmp/WallpaperNow.txt
-        swaybg -m fill -i ${wpdir}${file} &
+        swww img -t random ${wpdir}${file} &
         sleep 1000
     done
 done
-        
-#feh --bg-max "/home/hzf/Pictures/Wallpaper/wallhaven-dpw6wg.jpg"
