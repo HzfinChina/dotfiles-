@@ -1,7 +1,7 @@
 #!/bin/bash
 wpdir="/home/hzf/Pictures/Wallpapers/"
 wallpapers=$(ls $wpdir | sort -R)
-start=true
+swww init
 while true
 do 
     for file in $wallpapers
