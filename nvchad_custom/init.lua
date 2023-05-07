@@ -15,8 +15,6 @@ vim.opt.foldlevel=20
 vim.opt.foldmethod="expr"
 vim.opt.foldexpr="nvim_treesitter#foldexpr()"
 
-vim.opt.guifont="Hack:h18"
-
 local function open_nvim_tree(data)
 
   -- buffer is a real file on the disk

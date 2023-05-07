@@ -141,9 +141,10 @@ bindsym $mod+f2 exec ~/.config/sway/redshift.sh d
 bindsym $mod+f3 exec ~/.config/sway/redshift.sh b
 bindsym $mod+Shift+f2 exec ~/.config/sway/redshift.sh w
 bindsym $mod+Shift+f3 exec ~/.config/sway/redshift.sh c
-bindsym $mod+Shift+m exec ~/.config/sway/multihead.sh
+# bindsym $mod+Shift+m exec ~/.config/sway/multihead.sh
 bindsym $mod+Shift+r exec $term -e ranger
 bindsym $mod+Shift+z exec swaylock -c 000000
+bindsym $mod+Shift+m exit
 
 
 
@@ -161,16 +162,16 @@ for_window [window_role="pop-up"] floating enable
 
 # Status Bar {{{
 bar {
-  swaybar_command waybar -c /home/hzf/.config/waybar/config.jsonc
+  swaybar_command waybar 
 }
 # }}}:
 
 # Exec {{{
-# exec ~/.config/sway/wallpaperconfigure.sh
+exec ~/.config/sway/wallpaperconfigure.sh
 exec dunst
 exec clash
 exec fcitx5
 exec nutstore
-# exec ~/.config/sway/disable_monitor.sh
+exec ~/.config/sway/disable_monitor.sh
 # }}}
 # 
