@@ -77,6 +77,12 @@ ps_kill(){
     kill `ps_grep $1 | awk '{print $2}'`
 }
 
+update_time(){
+    echo "Updating..."
+    sudo ntpdate -u ntp.aliyun.com 
+    sudo hwclock -w
+}
+
 eval $(thefuck --alias)
 
 ZSH_CACHE_DIR=$HOME/.cache/oh-my-zsh

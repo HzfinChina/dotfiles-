@@ -63,6 +63,9 @@ local plugins = {
         build = function()
             vim.fn["mkdp#util#install"]()
         end,
+        config = function()
+            require "custom.configs.markdown-preview"
+        end, -- Override to setup mason-lspconfig
     },
     {
         'goolord/alpha-nvim',

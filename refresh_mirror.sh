@@ -1,1 +1,1 @@
-sudo curl "https://archlinux.org/mirrorlist/?country=CN&protocol=http&protocol=https&ip_version=4&ip_version=6" --output /etc/pacman.d/mirrorlist
+sudo reflector --country China --latest 5 --protocol http,https --sort rate --save /etc/pacman.d/mirrorlist

@@ -4,7 +4,8 @@ local capabilities = require("plugins.configs.lspconfig").capabilities
 local lspconfig = require "lspconfig"
 
 -- if you just want default config for the servers then put them in a table
-local servers = {'clangd', 'arduino_language_server','pyright',}
+local servers = {'clangd','pyright','typst_lsp','lua_ls'
+}
 
 
 for _, lsp in ipairs(servers) do
