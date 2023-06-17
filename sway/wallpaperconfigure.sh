@@ -8,6 +8,6 @@ do
         pkill swaybg
         echo $wpdir$file > /tmp/WallpaperNow.txt
         swaybg -m fill -i ${wpdir}${file} &
-        sleep 1000
+        sleep 100
     done
 done

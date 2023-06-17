@@ -1,10 +1,10 @@
 [Added Associations]
 text/plain=nvim-qt.desktop;sublime_text.desktop;
-image/jpeg=swayimg.desktop;
-image/png=swayimg.desktop;
 text/x-python=nvim-qt.desktop;
 
 [Default Applications]
 image/png=swayimg.desktop
+image/jpg=swayimg.desktop
+image/jpeg=swayimg.desktop;
 inode/directory=thunar.desktop
-application/vnd.openxmlformats-officedocument.spreadsheetml.sheet=wps-office-et.desktop
+application/vnd.openxmlformats-officedocument.wordprocessingml.document=wps-office-wps.desktop

@@ -1,0 +1,12 @@
+__build_info:
+  rime_version: 1.8.5
+  timestamps:
+    core2022.custom: 0
+    core2022.schema: 1680023985
+    default: 0
+schema:
+  name: "字集过滤·伪方案·勿用"
+  schema_id: core2022
+translator:
+  dictionary: core2022
+  enable_user_dict: false

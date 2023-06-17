@@ -34,4 +34,4 @@ end
 vim.api.nvim_create_autocmd({ "VimEnter" }, { callback = open_nvim_tree })
 -- }}}
 
-vim.api.nvim_command('autocmd BufRead,BufNewFile *.typ setfiletype typst')
+
