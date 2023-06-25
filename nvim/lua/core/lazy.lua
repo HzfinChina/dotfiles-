@@ -49,21 +49,17 @@ lazy.setup({
       'goolord/alpha-nvim',
       dependencies = { 'nvim-tree/nvim-web-devicons' },
     },
-    {
-      "Scysta/pink-panic.nvim",
-      dependencies = {'rktjmp/lush.nvim'},
-    },
     { "EdenEast/nightfox.nvim" },
     { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
     {
-  'uloco/bluloco.nvim',
-  lazy = false,
-  priority = 1000,
-  dependencies = { 'rktjmp/lush.nvim' },
-  config = function()
-    -- your optional config goes here, see below.
-  end,
-},
+      'uloco/bluloco.nvim',
+      lazy = false,
+      priority = 1000,
+      dependencies = { 'rktjmp/lush.nvim' },
+      config = function()
+        -- your optional config goes here, see below.
+      end,
+    },
     {"cpea2506/one_monokai.nvim"},
 
     -- Git labels
@@ -135,7 +131,7 @@ lazy.setup({
         require('telescope').setup{
           pickers = {
             colorscheme = {
-              enable_preview = true
+              enable_preview = true,
             }
           }
         }
@@ -180,7 +176,58 @@ lazy.setup({
     },
     -- Rainbow Highlighting
     {
-        "HiPhish/nvim-ts-rainbow2",
+      "HiPhish/nvim-ts-rainbow2",
     },
+    -- easy motion
+    {
+      'phaazon/hop.nvim',
+      config = function ()
+        require("hop").setup{}
+      end
+    },
+    -- vim-tex
+    {
+      "lervag/vimtex",
+      ft = {"tex"},
+      config = function ()
+        vim.g.vimtex_view_method = "zathura"
+        vim.g.vimtex_compiler_latexmk = {
+          build_dir = ".out",
+          options = {
+            "-shell-escape",
+            "-verbose",
+            "-file-line-error",
+            "-interaction=nonstopmode",
+            "-synctex=1",
+          },
+        }
+
+        vim.g.vimtex_fold_enabled = true
+      end
+    },
+    -- which key
+    {
+      "folke/which-key.nvim",
+      event = "VeryLazy",
+      init = function()
+        vim.o.timeout = true
+        vim.o.timeoutlen = 300
+      end,
+      opts = {
+        -- your configuration comes here
+        -- or leave it empty to use the default settings
+        -- refer to the configuration section below
+      }
+    },
+    -- trouble: quick fix list
+    {
+      "folke/trouble.nvim",
+      dependencies = { "nvim-tree/nvim-web-devicons" },
+      opts = {
+        -- your configuration comes here
+        -- or leave it empty to use the default settings
+        -- refer to the configuration section below
+      },
+    }
   }
 })

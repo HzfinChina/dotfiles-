@@ -154,6 +154,7 @@ bindsym $mod+Shift+r exec kitty -e ranger
 for_window {
     [app_id="firefox" title="Firefox — Sharing Indicator"] border none, floating enable, nofocus
     [app_id="firefox" title="Library"] border none, floating enable, nofocus
+    [app_id="python3"] floating enable
 }
 for_window {
     [app_id="thunar"] border none, floating enable
@@ -177,12 +178,13 @@ bar {
 # Exec {{{
 # GTK+ long startup
 exec dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK
-exec ~/.config/sway/wallpaperconfigure.sh
+exec python ~/.config/sway/wallpaperconfigure.py
+exec ~/.config/sway/disable_monitor.sh
+# system notify
 exec dunst
 exec clash
 exec fcitx5
 exec copyq
 # exec nutstore
-exec ~/.config/sway/disable_monitor.sh
 # }}}
 #

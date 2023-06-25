@@ -33,6 +33,12 @@ map('n', '<C-h>', '<C-w>h')
 map('n', '<C-j>', '<C-w>j')
 map('n', '<C-k>', '<C-w>k')
 map('n', '<C-l>', '<C-w>l')
+-- resize using Ctrl + {left, right, up, down}
+map('n', '<C-left>', '<C-w><C-<>')
+map('n', '<C-right>', '<C-w><C->>')
+map('n', '<C-up>', '<C-w><C-+>')
+map('n', '<C-down>', '<C-w><C-->')
+
 
 -- map Ctrl shift c v to copy and paste
 map('n','<C-S-v>','"+p')
@@ -41,8 +47,9 @@ map('i','<C-S-v>','<C-R>+')
 map('v','<C-S-c>','"+y')
 
 -- Close all windows and exit from Neovim with <leader> and q
-map('n', '<leader>q', ':qa!<CR>')
+map('n', '<leader>q', ':TroubleToggle<CR>',{nowait=true})
 map('n', '<leader>w', ':w<CR>',{nowait = true})
+map('n', '<leader>d',' :bd<CR>',{nowait = true})
 
 -----------------------------------------------------------
 -- Applications and Plugins shortcuts
@@ -51,19 +58,10 @@ map('n', '<leader>w', ':w<CR>',{nowait = true})
 map('n', '<C-n>', ':NvimTreeToggle<CR>')            -- open/close
 -- Term
 map('n', '<C-t>', ':ToggleTerm<CR>')
+map('t','<Esc>',[[<C-\><C-n>]])
+
+-- Telescope
 map('n', '<f1>', ':Telescope<CR>')
 
--- make
-vim.api.nvim_create_autocmd("FileType", {
-        pattern = "python",
-        callback = function()
-            vim.api.nvim_buf_set_keymap(
-                0,
-                "n",
-                "<f5>",
-                ":w<CR>:python %<CR>",
-                { silent = true, noremap = true }
-            )
-        end,
-    })
-
+-- Hop
+map('n','<leader>h',':HopWord<CR>')

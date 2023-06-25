@@ -17,13 +17,15 @@ opt.mouse = 'a'                       -- Enable mouse support
 opt.swapfile = false                  -- Don't use swapfile
 opt.completeopt = 'menuone,noinsert,noselect'  -- Autocomplete options
 
+opt.fileencodings={"ucs-bom","utf-8","cp936","gb18030","big5","euc-jp","euc-kr","latin1"}
+
 
 -----------------------------------------------------------
 -- Neovim UI
 -----------------------------------------------------------
 opt.number = true           -- Show line number
 opt.showmatch = true        -- Highlight matching parenthesis
-opt.colorcolumn = '80'      -- Line lenght marker at 80 columns
+opt.colorcolumn = '100'      -- Line lenght marker at 80 columns
 opt.splitright = true       -- Vertical split to the right
 opt.splitbelow = true       -- Horizontal split to the bottom
 opt.ignorecase = true       -- Ignore case letters when search
@@ -55,18 +57,8 @@ opt.updatetime = 250        -- ms to wait for trigger an event
 -----------------------------------------------------------
 -- Startup
 -----------------------------------------------------------
--- 获取当前小时数
-local hour = tonumber(os.date("%H"))
-
--- 判断当前时间属于哪个时间段
-local theme
-if hour >= 9 and hour < 18 then
-  theme = "pink-panic"
-else
-  theme = "nightfox"
-end
-
-vim.cmd('colorscheme ' .. theme)
+-- set colorscheme
+vim.cmd([[colorscheme bluloco]])
 
 -- Disable nvim intro
 opt.shortmess:append "sI"

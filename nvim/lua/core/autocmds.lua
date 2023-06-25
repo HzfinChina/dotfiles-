@@ -8,6 +8,7 @@
 local augroup = vim.api.nvim_create_augroup   -- Create/get autocommand group
 local autocmd = vim.api.nvim_create_autocmd   -- Create autocommand
 
+
 -- General settings:
 --------------------
 
@@ -51,6 +52,20 @@ autocmd('Filetype', {
     'yaml', 'lua'
   },
   command = 'setlocal shiftwidth=2 tabstop=2'
+})
+
+-- make
+autocmd("FileType", {
+        pattern = "python",
+        callback = function()
+            vim.api.nvim_buf_set_keymap(
+                0,
+                "n",
+                "<f5>",
+                ":w<CR>:TermExec cmd='python %'<CR>",
+                { silent = true, noremap = true }
+            )
+        end,
 })
 
 
