@@ -68,6 +68,6 @@ while True:
     command = ["swww","img",picture_path]
     print(command)
     process = subprocess.Popen(command)
-    # 等待10分钟
-    time.sleep(1000)
+    # 等待
+    time.sleep(500)
 

@@ -15,7 +15,7 @@ set $opacity 0.9
 smart_borders on
 gaps inner 10
 # xwayland disable
-font pango:Inter:style=Regular 8
+font pango:Inter:style=Regular 13
 default_border pixel 5
 default_floating_border pixel 2
 
@@ -163,7 +163,8 @@ for_window {
     # opacity
     [app_id="kitty"] opacity $opacity
     [app_id="foot"] opacity $opacity
-    [app_id="alacritty"] opacity $opacity
+    # [app_id="alacritty"] opacity $opacity
+    # [app_id="neovide"] opacity $opacity
 }
 
 for_window [window_role="pop-up"] floating enable

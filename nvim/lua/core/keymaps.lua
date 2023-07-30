@@ -22,11 +22,13 @@ map('n', '<left>', ':bprevious<CR>')
 map('n', '<right>', ':bnext<CR>')
 
 -- Map Esc to jj
-map('i', 'jj', '<Esc>')
 map('i', '<S-CR>', '<Esc>o')
 
+-- Map Ctrl shift t to open terminal in current folder
+-- map('n','<C-S-T>', '')
+
 -- Clear search highlighting with <leader> and c
-map('n', '<leader>c', ':nohlserach<CR>')
+map('n', '<leader>c', ':nohlsearch<CR>')
 
 -- Move around splits using Ctrl + {h,j,k,l}
 map('n', '<C-h>', '<C-w>h')
@@ -48,7 +50,6 @@ map('v','<C-S-c>','"+y')
 
 -- Close all windows and exit from Neovim with <leader> and q
 map('n', '<leader>q', ':TroubleToggle<CR>',{nowait=true})
-map('n', '<leader>w', ':w<CR>',{nowait = true})
 map('n', '<leader>d',' :bd<CR>',{nowait = true})
 
 -----------------------------------------------------------
@@ -57,11 +58,19 @@ map('n', '<leader>d',' :bd<CR>',{nowait = true})
 -- NvimTree
 map('n', '<C-n>', ':NvimTreeToggle<CR>')            -- open/close
 -- Term
-map('n', '<C-t>', ':ToggleTerm<CR>')
-map('t','<Esc>',[[<C-\><C-n>]])
+
+map('n', '<A-t>', [[<cmd>ToggleTerm direction=float<CR>]])
+map('n', '<C-t>', '<cmd>ToggleTerm<CR>')
+-- map('t','<Esc>',[[<C-\><C-n>]])
 
 -- Telescope
 map('n', '<f1>', ':Telescope<CR>')
 
 -- Hop
 map('n','<leader>h',':HopWord<CR>')
+-- neovide
+
+if vim.g.neovide then
+  map('n','<C-=>',':let g:neovide_scale_factor = g:neovide_scale_factor + 0.05<CR>')
+  map('n','<C-->',':let g:neovide_scale_factor = g:neovide_scale_factor - 0.05<CR>')
+end

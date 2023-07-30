@@ -138,4 +138,12 @@ for _, lsp in ipairs(servers) do
 end
 
 -- arduino setup
-
+local MY_FQBN = "arduino:avr:nano"
+lspconfig.arduino_language_server.setup {
+    cmd = {
+        "arduino-language-server",
+        "-cli-config", "/home/hzf/dotfiles/arduino-cli.yaml",
+        "-fqbn",
+        "arduino:avr:mega"
+    }
+}
