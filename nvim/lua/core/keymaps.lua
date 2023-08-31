@@ -61,7 +61,7 @@ map('n', '<C-n>', ':NvimTreeToggle<CR>')            -- open/close
 
 map('n', '<A-t>', [[<cmd>ToggleTerm direction=float<CR>]])
 map('n', '<C-t>', '<cmd>ToggleTerm<CR>')
--- map('t','<Esc>',[[<C-\><C-n>]])
+map('t','<Esc>',[[<C-\><C-n>]])
 
 -- Telescope
 map('n', '<f1>', ':Telescope<CR>')

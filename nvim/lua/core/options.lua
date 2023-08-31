@@ -16,7 +16,7 @@ opt.mouse = 'a'                       -- Enable mouse support
 -- opt.clipboard = 'unnamedplus'         -- Copy/paste to system clipboard
 opt.swapfile = false                  -- Don't use swapfile
 opt.completeopt = 'menuone,noinsert,noselect'  -- Autocomplete options
-
+opt.undofile = true
 opt.fileencodings={"ucs-bom","utf-8","cp936","gb18030","big5","euc-jp","euc-kr","latin1"}
 
 

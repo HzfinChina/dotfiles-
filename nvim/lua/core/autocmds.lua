@@ -56,17 +56,36 @@ autocmd('Filetype', {
 
 -- make
 autocmd("FileType", {
-        pattern = "python",
-        callback = function()
-            vim.api.nvim_buf_set_keymap(
-                0,
-                "n",
-                "<f5>",
-                ":w<CR>:TermExec cmd='python %'<CR>",
-                { silent = true, noremap = true }
-            )
-        end,
+  pattern = "python",
+  callback = function()
+    vim.api.nvim_buf_set_keymap(
+      0,
+      "n",
+      "<f5>",
+      ":w<CR>:TermExec cmd='python %'<CR>",
+      { silent = true, noremap = true }
+    )
+  end,
 })
 
+-- typst
+autocmd({"BufNewFile","BufRead"},{
+  pattern = "*.typ",
+  command = [[set filetype=typst |set makeprg=typst\ c\ % ]],
 
+})
+
+autocmd("FileType", {
+  pattern = "typst",
+  callback = function()
+    vim.api.nvim_buf_set_keymap(
+      0,
+      "n",
+      "<f5>",
+      ":w<CR>:TermExec cmd='zathura %<.pdf > /dev/null & ;typst w %' <CR>",
+      { silent = true, noremap = true }
+    )
+
+  end,
+})
 

@@ -1,0 +1,12 @@
+normal_window = true
+height=50%
+hide_scroll=true
+insensitive=true
+matching=contains
+mode=drun
+prompt=
+term=kitty
+width=60%
+line_wrap=word
+allow_images=true
+signle_click=true

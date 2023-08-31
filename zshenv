@@ -13,3 +13,4 @@
  export npm_config_proxy=127.0.0.1:7890
 
  export EDITOR=nvim
+ export QT_QPA_PLATFORM=xcb

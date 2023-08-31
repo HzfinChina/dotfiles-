@@ -1,9 +1,11 @@
 set page-padding 2
-set page-cache-size 40
+set page-cache-size 20
+# 40M
+set page-thumbnail-size 41943040
 # Defines if original image colors should be kept while recoloring
-set recolor-reverse-video true 
+set recolor-reverse-video true
 set recolor-lightcolor "#000000"
-set recolor-darkcolor "#88CFEC" 
+set recolor-darkcolor "#88CFEC"
 set selection-clipboard clipboard
 
 set first-page-column 1:1:1:1

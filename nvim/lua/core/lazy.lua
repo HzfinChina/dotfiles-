@@ -229,5 +229,17 @@ lazy.setup({
         -- refer to the configuration section below
       },
     },
+    {'TobinPalmer/pastify.nvim',
+      cmd = { 'Pastify' },
+  config = function()
+    require('pastify').setup {
+      opts = {
+      },
+          ft = {
+            typst = '#img("$IMG$")'
+          }
+    }
+  end
+    },
   }
 })
