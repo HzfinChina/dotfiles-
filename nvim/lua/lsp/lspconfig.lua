@@ -33,25 +33,25 @@ local on_attach = function(client, bufnr)
   -- See: https://sbulav.github.io/til/til-neovim-highlight-references/
   -- for the highlight trigger time see: `vim.opt.updatetime`
   if client.server_capabilities.documentHighlightProvider then
-      vim.api.nvim_create_augroup("lsp_document_highlight", { clear = true })
-      vim.api.nvim_clear_autocmds { buffer = bufnr, group = "lsp_document_highlight" }
-      vim.api.nvim_create_autocmd("CursorHold", {
-          callback = vim.lsp.buf.document_highlight,
-          buffer = bufnr,
-          group = "lsp_document_highlight",
-          desc = "Document Highlight",
-      })
-      vim.api.nvim_create_autocmd("CursorMoved", {
-          callback = vim.lsp.buf.clear_references,
-          buffer = bufnr,
-          group = "lsp_document_highlight",
-          desc = "Clear All the References",
-      })
+    vim.api.nvim_create_augroup("lsp_document_highlight", { clear = true })
+    vim.api.nvim_clear_autocmds { buffer = bufnr, group = "lsp_document_highlight" }
+    vim.api.nvim_create_autocmd("CursorHold", {
+      callback = vim.lsp.buf.document_highlight,
+      buffer = bufnr,
+      group = "lsp_document_highlight",
+      desc = "Document Highlight",
+    })
+    vim.api.nvim_create_autocmd("CursorMoved", {
+      callback = vim.lsp.buf.clear_references,
+      buffer = bufnr,
+      group = "lsp_document_highlight",
+      desc = "Clear All the References",
+    })
   end
 
   -- Mappings.
   -- See `:help vim.lsp.*` for documentation on any of the below functions
-  local bufopts = { noremap=true, silent=true, buffer=bufnr }
+  local bufopts = { noremap = true, silent = true, buffer = bufnr }
   vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
   vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
   vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
@@ -66,36 +66,30 @@ local on_attach = function(client, bufnr)
   vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, bufopts)
   vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, bufopts)
   vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
-  vim.keymap.set('n', '<space>f', function() vim.lsp.buf.format { async = true } end, bufopts)
 end
 
 -- Diagnostic settings:
 -- see: `:help vim.diagnostic.config`
 -- Customizing how diagnostics are displayed
 vim.diagnostic.config({
-  update_in_insert = true,
+  -- 如果设置update_in_insert的话会一直跳，很烦
+  update_in_insert = false,
   float = {
-    focusable = false,
+    -- 设置了不自动弹出后就可以设置focusable 为true了
+    focusable = true,
     style = "minimal",
     border = "rounded",
     source = "always",
     header = "",
     prefix = "",
-	},
+  },
 })
 
 -- Show line diagnostics automatically in hover window
-vim.cmd([[
-  autocmd! CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, { focus = false })
-]])
-
--- Mappings.
--- See `:help vim.diagnostic.*` for documentation on any of the below functions
-local opts = { noremap=true, silent=true }
-vim.keymap.set('n', '<space>e', vim.diagnostic.open_float, opts)
-vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
-vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
-vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, opts)
+-- 对我来说不需要，反而还挡住了cmp的提示
+-- vim.cmd([[
+--   autocmd! CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, { focus = false })
+-- ]])
 
 --[[
 Language servers setup:
@@ -122,7 +116,7 @@ end
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches.
 -- Add your language server below:
-local servers = { 'bashls', 'pyright', 'clangd', 'texlab','typst_lsp','luau_lsp'}
+local servers = { 'bashls', 'pyright', 'clangd', 'texlab', 'typst_lsp', 'lua_ls' }
 
 -- Call setup
 for _, lsp in ipairs(servers) do
@@ -137,13 +131,21 @@ for _, lsp in ipairs(servers) do
   }
 end
 
+-- nvim ufo fold setttings
+capabilities.textDocument.foldingRange = {
+    dynamicRegistration = false,
+    lineFoldingOnly = true
+}
+require('ufo').setup()
+
+
 -- arduino setup
-local MY_FQBN = "arduino:avr:nano"
+local MY_FQBN = "arduino:avr:mega"
 lspconfig.arduino_language_server.setup {
-    cmd = {
-        "arduino-language-server",
-        "-cli-config", "/home/hzf/dotfiles/arduino-cli.yaml",
-        "-fqbn",
-        "arduino:avr:mega"
-    }
+  cmd = {
+    "arduino-language-server",
+    "-cli-config", "/home/hzf/dotfiles/arduino-cli.yaml",
+    "-fqbn",
+    MY_FQBN,
+  }
 }

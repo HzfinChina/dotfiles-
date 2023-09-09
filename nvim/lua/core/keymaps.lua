@@ -7,7 +7,7 @@ local function map(mode, lhs, rhs, opts)
   if opts then
     options = vim.tbl_extend('force', options, opts)
   end
-  vim.api.nvim_set_keymap(mode, lhs, rhs, options)
+  vim.keymap.set(mode, lhs, rhs, options)
 end
 
 -- Change leader to a comma
@@ -49,14 +49,14 @@ map('i','<C-S-v>','<C-R>+')
 map('v','<C-S-c>','"+y')
 
 -- Close all windows and exit from Neovim with <leader> and q
-map('n', '<leader>q', ':TroubleToggle<CR>',{nowait=true})
+map('n', '<leader>t', ':TroubleToggle<CR>',{nowait=true})
 map('n', '<leader>d',' :bd<CR>',{nowait = true})
 
 -----------------------------------------------------------
 -- Applications and Plugins shortcuts
 -----------------------------------------------------------
--- NvimTree
-map('n', '<C-n>', ':NvimTreeToggle<CR>')            -- open/close
+-- Neotree
+map('n', '<C-n>', ':Neotree reveal toggle<CR>')            -- open/close
 -- Term
 
 map('n', '<A-t>', [[<cmd>ToggleTerm direction=float<CR>]])
@@ -68,8 +68,19 @@ map('n', '<f1>', ':Telescope<CR>')
 
 -- Hop
 map('n','<leader>h',':HopWord<CR>')
--- neovide
 
+-- nvim-ufo fold settings
+map('n', 'zR', require('ufo').openAllFolds)
+map('n', 'zM', require('ufo').closeAllFolds)
+map('n', 'zr', require('ufo').openFoldsExceptKinds)
+map('n', 'zm', require('ufo').closeFoldsWith) -- closeAllFolds == closeFoldsWith(0)
+
+-- lsp signature
+map({ 'n' }, '<Leader>s', function()
+  vim.lsp.buf.signature_help()
+end, { silent = true, noremap = true, desc = 'toggle signature' })
+
+-- neovide
 if vim.g.neovide then
   map('n','<C-=>',':let g:neovide_scale_factor = g:neovide_scale_factor + 0.05<CR>')
   map('n','<C-->',':let g:neovide_scale_factor = g:neovide_scale_factor - 0.05<CR>')
