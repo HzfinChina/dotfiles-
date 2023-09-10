@@ -6,6 +6,7 @@ lazy-lock.json
 *.log
 *.lock
 *.db
+
 rime/easy_english.userdb
 rime/trash
 sublime-text/Local

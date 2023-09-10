@@ -8,9 +8,9 @@ daemon:
 directories:
   data: /home/hzf/.arduino15
   downloads: /home/hzf/.arduino15/staging
-  user: /home/hzf/Documents/Arduino/
+  user: /home/hzf/Documents/Arduino
 library:
-  enable_unsafe_install: false
+  enable_unsafe_install: true
 logging:
   file: ""
   format: text

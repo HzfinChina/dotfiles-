@@ -2,9 +2,6 @@
 -- General Neovim settings and configuration
 -----------------------------------------------------------
 
--- Default options are not included
--- See: https://neovim.io/doc/user/vim_diff.html
--- [2] Defaults - *nvim-defaults*
 
 local g = vim.g -- Global variables
 local opt = vim.opt -- Set options (global/buffer/windows-scoped)
@@ -23,7 +20,6 @@ opt.fileencodings = { "ucs-bom", "utf-8", "cp936", "gb18030", "big5", "euc-jp", 
 -- Neovim UI
 -----------------------------------------------------------
 opt.number = true -- Show line number
--- opt.numberwidth=1
 opt.signcolumn = "yes:1"
 opt.showmatch = true -- Highlight matching parenthesis
 -- opt.colorcolumn = "80" -- Line lenght marker at 80 columns
@@ -38,7 +34,7 @@ opt.cursorline = true
 
 opt.foldmethod = "expr" -- Enable folding (default 'foldmarker')
 opt.foldexpr = "nvim_treesitter#foldexpr()"
-opt.foldcolumn = '0' -- '0' is not bad
+opt.foldcolumn = '1' -- '0' is not bad
 opt.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
 opt.foldlevelstart = 99
 

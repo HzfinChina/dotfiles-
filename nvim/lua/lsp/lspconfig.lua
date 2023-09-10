@@ -23,6 +23,8 @@ end
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = cmp_nvim_lsp.default_capabilities(capabilities)
 
+
+
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
 local on_attach = function(client, bufnr)
@@ -52,19 +54,19 @@ local on_attach = function(client, bufnr)
   -- Mappings.
   -- See `:help vim.lsp.*` for documentation on any of the below functions
   local bufopts = { noremap = true, silent = true, buffer = bufnr }
-  vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
-  vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
-  vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
+  vim.keymap.set('n', 'gD', "<cmd>Lspsaga peek_type_definition<CR>", bufopts)
+  vim.keymap.set('n', 'gd', "<cmd>Lspsaga peek_definition<CR>", bufopts)
+  vim.keymap.set('n', 'K', "<cmd>Lspsaga hover_doc<CR>", bufopts)
   vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
   vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
+  vim.keymap.set('n', '<space>l', "<cmd>Lspsaga outline<CR>", bufopts)
   vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, bufopts)
   vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, bufopts)
   vim.keymap.set('n', '<space>wl', function()
     print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
   end, bufopts)
-  vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, bufopts)
-  vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, bufopts)
-  vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, bufopts)
+  vim.keymap.set('n', '<space>rn', "<cmd>Lspsaga rename<CR>", bufopts)
+  vim.keymap.set('n', '<space>ca', "<cmd>Lspsaga code_action<CR>", bufopts)
   vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
 end
 
@@ -74,6 +76,9 @@ end
 vim.diagnostic.config({
   -- 如果设置update_in_insert的话会一直跳，很烦
   update_in_insert = false,
+  virtual_text = {
+    prefix = '■'
+  },
   float = {
     -- 设置了不自动弹出后就可以设置focusable 为true了
     focusable = true,
@@ -113,6 +118,14 @@ local root_dir = function()
   return vim.fn.getcwd()
 end
 
+-- UI settings
+-- signcolumn settings
+local signs = { Error = "", Warn = "", Hint = " ", Info = " " }
+for type, icon in pairs(signs) do
+  local hl = "DiagnosticSign" .. type
+  vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
+end
+
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches.
 -- Add your language server below:
@@ -127,7 +140,7 @@ for _, lsp in ipairs(servers) do
     flags = {
       -- default in neovim 0.7+
       debounce_text_changes = 150,
-    }
+    },
   }
 end
 

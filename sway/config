@@ -162,13 +162,13 @@ for_window {
     [app_id="python3"] floating enable
 }
 for_window {
-    [app_id="thunar"] border none, floating enable
+    [app_id="nemo"] border none, floating enable
     [app_id="com.github.hluk.copyq"] border none, floating enable
     [class = "Vlc"] border none, floating enable
     # opacity
     [app_id="kitty"] opacity $opacity
     [app_id="foot"] opacity $opacity
-    # [app_id="alacritty"] opacity $opacity
+    [app_id="alacritty"] opacity $opacity
     # [app_id="neovide"] opacity $opacity
 }
 
