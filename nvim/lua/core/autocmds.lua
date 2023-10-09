@@ -55,8 +55,7 @@ autocmd("Filetype", {
 autocmd("FileType", {
 	pattern = "python",
 	callback = function()
-		vim.api.nvim_buf_set_keymap(
-			0,
+		vim.keymap.set(
 			"n",
 			"<f5>",
 			":w<CR>:TermExec cmd='python %'<CR>",
@@ -74,11 +73,22 @@ autocmd({ "BufNewFile", "BufRead" }, {
 autocmd("FileType", {
 	pattern = "typst",
 	callback = function()
-		vim.api.nvim_buf_set_keymap(
-			0,
+		vim.keymap.set(
 			"n",
 			"<f5>",
 			":w<CR>:TermExec cmd='sioyek %<.pdf > /dev/null & ;typst w %' <CR>",
+			{ silent = true, noremap = true }
+		)
+	end,
+})
+
+autocmd("FileType", {
+	pattern = "arduino",
+	callback = function()
+		vim.keymap.set(
+			"n",
+			"<f5>",
+			":w<CR>:TermExec cmd='arduino-cli upload -p `ls /dev/ttyUSB*` -b arduino:avr:mega' <CR>",
 			{ silent = true, noremap = true }
 		)
 	end,

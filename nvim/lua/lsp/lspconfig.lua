@@ -129,7 +129,7 @@ end
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches.
 -- Add your language server below:
-local servers = { 'bashls', 'pyright', 'clangd', 'texlab', 'typst_lsp', 'lua_ls' }
+local servers = { 'bashls', 'pyright', 'clangd', 'texlab', 'typst_lsp', 'lua_ls','gopls','phpactor' }
 
 -- Call setup
 for _, lsp in ipairs(servers) do
@@ -144,21 +144,23 @@ for _, lsp in ipairs(servers) do
   }
 end
 
+
+-- arduino setup
+local MY_FQBN = "arduino:avr:mega"
+lspconfig.arduino_language_server.setup {
+  -- on_new_config = arduino.on_new_config,
+  cmd = {
+    "arduino-language-server",
+    "-cli-config", "/home/hzf/dotfiles/arduino-cli.yaml",
+    '-clangd', '/usr/bin/clangd',
+    "-fqbn",
+    MY_FQBN,
+  }
+}
+
 -- nvim ufo fold setttings
 capabilities.textDocument.foldingRange = {
     dynamicRegistration = false,
     lineFoldingOnly = true
 }
 require('ufo').setup()
-
-
--- arduino setup
-local MY_FQBN = "arduino:avr:mega"
-lspconfig.arduino_language_server.setup {
-  cmd = {
-    "arduino-language-server",
-    "-cli-config", "/home/hzf/dotfiles/arduino-cli.yaml",
-    "-fqbn",
-    MY_FQBN,
-  }
-}

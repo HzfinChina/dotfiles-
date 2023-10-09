@@ -96,6 +96,14 @@ lazy.setup({
 			config = function()
 				require("themery").setup({
 					themes = {
+						"carbonfox",
+						"catppuccin",
+						"catppuccin-frappe",
+						"catppuccin-latte",
+						"catppuccin-macchiato",
+						"catppuccin-mocha",
+						"darkblue",
+						"dawnfox",
 						"dayfox",
 						"default",
 						"delek",
@@ -108,7 +116,6 @@ lazy.setup({
 						"github_dark",
 						"github_dark_colorblind",
 						"github_dark_default",
-						"github_dark_dimmed",
 						"github_dark_high_contrast",
 						"github_dark_tritanopia",
 						"github_dimmed",
@@ -146,6 +153,7 @@ lazy.setup({
 						"quiet",
 						"ron",
 						"shine",
+						"slate",
 						"sonokai",
 						"terafox",
 						"tokyonight",
@@ -154,20 +162,12 @@ lazy.setup({
 						"tokyonight-night",
 						"tokyonight-storm",
 						"torte",
-						"darkblue",
-						"dawnfox",
-						"catppuccin-mocha",
-						"catppuccin-macchiato",
-						"catppuccin-latte",
-						"catppuccin-frappe",
-						"catppuccin",
-						"carbonfox",
+						"zellner",
+						"bluloco",
 						"bluloco-light",
 						"bluloco-dark",
-						"bluloco",
 						"blue",
-						"slate",
-						"zellner",
+						"github_dark_dimmed",
 					},
 					themeConfigFile = "~/.config/nvim/lua/core/theme.lua", -- Described below
 					livePreview = true,
@@ -204,14 +204,26 @@ lazy.setup({
 				"MunifTanjim/nui.nvim",
 			},
 			config = function()
-				require("neo-tree").setup({
-					follow_current_file = {
-						enabled = true, -- This will find and focus the file in the active buffer every time
-						--               -- the current file is changed while the tree is open.
-					},
-          window={
-            width=25
-          }
+        require("neo-tree").setup({
+          follow_current_file = {
+            enabled = true, -- This will find and focus the file in the active buffer every time
+            --               -- the current file is changed while the tree is open.
+          },
+          window = {
+            width = 25,
+            mappings = {
+              ["o"] = "system_open",
+            },
+          },
+          commands = {
+            system_open = function(state)
+              local node = state.tree:get_node()
+              local path = node:get_id()
+              path = vim.fn.shellescape(path, 1)
+              -- Linux: open file in default application
+              vim.api.nvim_command("silent !xdg-open " .. path)
+            end,
+          },
 				})
 			end,
 		},
@@ -249,7 +261,7 @@ lazy.setup({
 		},
 		{
 			"nvimdev/lspsaga.nvim",
-      event = 'LspAttach',
+			event = "LspAttach",
 			config = function()
 				require("lspsaga").setup({})
 			end,
@@ -270,15 +282,15 @@ lazy.setup({
 		{
 			"onsails/lspkind.nvim",
 		},
-    -- stand alone lsp ui
-    {
-      "j-hui/fidget.nvim",
-      tag = "legacy",
-      event = "LspAttach",
-      opts = {
-        -- options
-      },
-    },
+		-- stand alone lsp ui
+		{
+			"j-hui/fidget.nvim",
+			tag = "legacy",
+			event = "LspAttach",
+			opts = {
+				-- options
+			},
+		},
 		-- 键入参数时显示类型
 		{
 			"ray-x/lsp_signature.nvim",
@@ -370,10 +382,7 @@ lazy.setup({
 		{
 			"L3MON4D3/LuaSnip",
 			dependencies = { "rafamadriz/friendly-snippets" },
-			config = function()
-				require("luasnip").setup({})
-				require("luasnip.loaders.from_vscode").lazy_load()
-			end,
+			build = "make install_jsregexp",
 		},
 		-- Rainbow Highlighting
 		--{
@@ -442,8 +451,26 @@ lazy.setup({
 			},
 			lazy = false,
 		},
+		{
+			"andrewferrier/debugprint.nvim",
+			opts = { ... },
+			-- Remove the following line to use development versions,
+			-- not just the formal releases
+			version = "*",
+		},
     {
-      "andrewferrier/debugprint.nvim",
+      "folke/flash.nvim",
+      event = "VeryLazy",
+      -- @type Flash.Config
+      opts = {},
+      -- stylua: ignore
+      keys = {
+        { "s", mode = { "n", "x", "o" }, function() require("flash").jump() end, desc = "Flash" },
+        { "S", mode = { "n", "x", "o" }, function() require("flash").treesitter() end, desc = "Flash Treesitter" },
+        { "r", mode = "o", function() require("flash").remote() end, desc = "Remote Flash" },
+        { "R", mode = { "o", "x" }, function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
+        { "<c-s>", mode = { "c" }, function() require("flash").toggle() end, desc = "Toggle Flash Search" },
+      },
     }
-	},
+  },
 })

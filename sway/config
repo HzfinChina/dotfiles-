@@ -8,13 +8,15 @@ set $up k
 set $right l
 set $term kitty
 set $menu wofi
-set $opacity 0.9
+set $opacity 1
 # }}}
 
 # Settings {{{
 smart_borders on
 gaps inner 10
-# output * scale 1.5
+output * scale 1
+output eDP-1 scale 1.5
+
 # xwayland disable
 font pango:Inter:style=Regular 13
 default_border pixel 5
@@ -140,7 +142,7 @@ bindsym Print exec grim -g "$(slurp)" - | wl-copy
 
 bindsym $mod+Shift+s exec grim -g "$(slurp)" - | wl-copy
 # bindsym $mod+f1 exec thunar
-bindsym $mod+f1 exec firefox
+bindsym $mod+f1 exec neovide
 bindsym $mod+f2 exec ~/.config/sway/redshift.sh d
 bindsym $mod+f3 exec ~/.config/sway/redshift.sh b
 bindsym $mod+z exec swaylock -c 000000
